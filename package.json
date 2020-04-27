@@ -23,6 +23,7 @@
     "@babel/types": "^7.9.5"
   },
   "dependencies": {
+    "@babel/generator": "^7.9.5",
     "chai": "^4.2.0",
     "mocha": "^7.1.1"
   }
