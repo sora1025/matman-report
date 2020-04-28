@@ -7,8 +7,22 @@ module.exports = function({ type: t }) {
       FunctionExpression(path) {
         const parent = path.parent;
         const name = parent.callee.name
+        //移除除describe以外函数的第二个函数参数
         if(name !== 'describe') {
           path.remove();
+        }
+
+        //同步子节点和父节点的author字段
+        if(parent.arguments[2]) {
+          const args = parent.arguments[2];
+          if(path.node.body.body.expression){
+            
+          }
+          console.log(path.node.body.body.expression);
+          
+          
+          
+
         }
       },
 
@@ -23,8 +37,7 @@ module.exports = function({ type: t }) {
         if(before.name == 'before') {
           path.remove()
         }
-      }
-      
+      },
     },
   }
 }
