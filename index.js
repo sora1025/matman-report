@@ -17,13 +17,10 @@ const resAST = parser.parse(res.code);
 
 const report = transfer(resAST);
 
-fs.existsSync('./transfer/after.js') && fs.unlinkSync('./transfer/after.js')
-fs.writeFileSync('./transfer/after.js', res.code, 'utf-8')
-
-fs.existsSync('./transfer/rawJSON.json') && fs.unlinkSync('./transfer/rawJSON.json')
-fs.writeFileSync('./transfer/rawJSON.json', JSON.stringify(resAST,null,2), 'utf-8')
-
 fs.existsSync('./report/report.json') && fs.unlinkSync('./report/report.json')
+if(!fs.existsSync('./report')) {
+  fs.mkdirSync('./report')
+}
 fs.writeFileSync('./report/report.json', JSON.stringify(report,null,2), 'utf-8')
 
 
