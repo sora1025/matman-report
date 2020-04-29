@@ -19,27 +19,27 @@ module.exports = function Transfer(raw) {
         desObj = item.expression.arguments[1];
       }
 
-      // console.log(fnBody);
-
       title = title.value;
       res['title'] = title;
 
       //遍历标志对象，添加进res
       if(desObj) {
-        desObj.properties.map(item => {
-          res[item.key.name] = item.value.value;
-        })
-      }
-      suites.push(res);
+        const keywords = {};
 
+        desObj.properties.map(item => {
+          keywords[item.key.name] = item.value.value;
+        })
+
+        res['desObj'] = keywords;
+      }
+
+      suites.push(res);
 
       //如果fnBody存在，就应该有suites字段，该字段为res数组，应该在递归后添加
       if(fnBody) {
         // res['suites'] = suites;
-        // TransferRaw(fnBody.body.body)
         res['suites'] = TransferRaw(fnBody.body.body)
         // console.log(res);
-        
       }
       
     })

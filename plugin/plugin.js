@@ -12,13 +12,11 @@ module.exports = function({ type: t }) {
           path.remove();
         }
 
-        //同步子节点和父节点的author字段
+        //同步子节点和父节点的arguments[2]对象
         if(parent.arguments[2]) {
           const args = parent.arguments[2];
-          if(path.node.body.body.expression){
-            
-          }
-          console.log(path.node.body.body.expression);
+          
+          console.log(path.node.body.body[0].expression);
           
           
           
