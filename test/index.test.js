@@ -35,7 +35,7 @@ describe('simple.html：常规检查-普通静态页面', function () {
                 'isExist': true,
                 'text': '规则说明：1.第一条规则；2.第二条规则；3.第三条规则，这条规则很长，会自动换行展示自动换行展示自动换行展示自动换行展示自动换行展示；同意不同意'
             });
-        },{小宁});
+        });
 
         it('按钮样式检查通过', function () {
             expect(data.buttonCondition).to.eql({
@@ -52,5 +52,5 @@ describe('simple.html：常规检查-普通静态页面', function () {
                 'text': '我简单说两句，我很长，但是不能够换行不能够换行不能够换行不能够换行不能够换行不能够换行不能够换行'
             });
         });
-    },{author:'小张'});
+    });
 },{author:'小焦', plevel: 'p1'});
