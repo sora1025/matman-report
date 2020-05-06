@@ -35,7 +35,7 @@ describe('simple.html：常规检查-普通静态页面', function () {
                 'isExist': true,
                 'text': '规则说明：1.第一条规则；2.第二条规则；3.第三条规则，这条规则很长，会自动换行展示自动换行展示自动换行展示自动换行展示自动换行展示；同意不同意'
             });
-        });
+        },{author:'小张'});
 
         it('按钮样式检查通过', function () {
             expect(data.buttonCondition).to.eql({
@@ -53,4 +53,4 @@ describe('simple.html：常规检查-普通静态页面', function () {
             });
         });
     });
-},{author:'小焦', plevel: 'p1'});
+},{author:'小焦', plevel: 'p1', des: '我是最外层的describe'});

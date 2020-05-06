@@ -1,3 +1,5 @@
+const merge = require('deepmerge')
+
 module.exports = function({ type: t }) {
   return {
     visitor: {
@@ -22,7 +24,7 @@ module.exports = function({ type: t }) {
               //子节点有第三个参数
               if(item.expression.arguments[2]) {
                 let desObj = item.expression.arguments[2];
-                let newDesObj = Object.assign({}, args, desObj)
+                let newDesObj = merge(args, desObj);
                 item.expression.arguments[2] = newDesObj;
               }
               //子节点没有第三个参数

@@ -9,19 +9,22 @@ const transfer = require('./plugin/transfer')
 
 const data = fs.readFileSync('./test/index.test.js','utf-8')
 
+//修改AST
 const res = transform(`${data}`, {
   plugins: [require('./plugin/plugin')]
 })
 
+//AST --> JSON
 const resAST = parser.parse(res.code);
 
+//JSON --> report
 const report = transfer(resAST);
 
-// fs.existsSync('./transfer/transfer.js') && fs.unlinkSync('./transfer/transfer.js')
-// if(!fs.existsSync('./transfer')) {
-//   fs.mkdirSync('./transfer')
-// }
-// fs.writeFileSync('./transfer/transfer.js', res.code, 'utf-8')
+fs.existsSync('./transfer/transfer.js') && fs.unlinkSync('./transfer/transfer.js')
+if(!fs.existsSync('./transfer')) {
+  fs.mkdirSync('./transfer')
+}
+fs.writeFileSync('./transfer/transfer.js', res.code, 'utf-8')
 
 fs.existsSync('./report/report.json') && fs.unlinkSync('./report/report.json')
 if(!fs.existsSync('./report')) {
