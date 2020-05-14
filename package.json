@@ -1,10 +1,10 @@
 {
   "name": "transfer-demo",
   "version": "1.0.0",
-  "description": "利用AST修改json数据",
+  "description": "利用修改AST生成关联责任人报告",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js"
+    "report": "node ./index.js"
   },
   "repository": {
     "type": "git",

@@ -1,50 +1,20 @@
 [
   {
-    "title": "simple.html：常规检查-普通静态页面",
+    "title": "debug 页面：调试UA",
     "desObj": {
-      "author": "小焦",
-      "plevel": "p1",
-      "des": "我是最外层的describe"
+      "author": "小阳"
     },
     "suites": [
       {
         "title": "检查基本信息",
         "desObj": {
-          "author": "小焦",
-          "plevel": "p1",
-          "des": "我是最外层的describe"
+          "author": "小阳"
         },
         "suites": [
           {
-            "title": "顶层图片检查通过",
+            "title": "ua符合预期（包含了自定义字符串 mycustomua）",
             "desObj": {
-              "author": "小宁",
-              "plevel": "p3",
-              "des": "我是最外层的describe"
-            }
-          },
-          {
-            "title": "规则文案检查通过",
-            "desObj": {
-              "author": "小张",
-              "plevel": "p1",
-              "des": "我是最外层的describe"
-            }
-          },
-          {
-            "title": "按钮样式检查通过",
-            "desObj": {
-              "author": "小焦",
-              "plevel": "p1",
-              "des": "我是最外层的describe"
-            }
-          },
-          {
-            "title": "文字单行检查通过",
-            "desObj": {
-              "author": "小焦",
-              "plevel": "p1",
-              "des": "我是最外层的describe"
+              "author": "小阳"
             }
           }
         ]

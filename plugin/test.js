@@ -1,12 +1,11 @@
-const args = {
-  "plevel": "p0",
-  "author": "sora"
+const path = require('path')
+
+let pathname = '/report/test/e2e-test/index.test.js';
+
+const res = (pathname) => {
+  let file = path.basename(pathname);
+  file = file.substring(file.indexOf('.')+1)
+  return file;
 }
 
-const desObj = {
-  "author": "aimer"
-}
-
-const newObj = Object.assign({}, args, desObj);
-
-console.log(newObj)
+console.log(res(pathname));
