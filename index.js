@@ -9,7 +9,6 @@ const fs = require('fs');
 
 const path = require('path');
 
-// const data = fs.readFileSync('./test/e2e-test/case.test.js','utf-8')
 
 let walk = function(dir) {
   var results = []
@@ -27,48 +26,51 @@ let walk = function(dir) {
                 results.push(path.resolve(__dirname, file))
             }
         }
-    })
+    });
     return results;
 }
 
-function dealScri(arr) {
+function handleFile(arr) {
   arr.forEach(filepath => {
-      var fileStr = fs.readFileSync(filepath, 'utf-8')
-//       fileStr = fileStr.replace(/[\n]|[\r]/g, "")
-//        fileStr = fileStr.replace(/(\<head\>.*?)(\<script.*?\<\/script\>){1,}(.*\<\/head\>)/g, '$1$3')
-      fs.writeFileSync(filepath, fileStr)
+      const data = fs.readFileSync(filepath, 'utf-8');
+
+      //修改AST
+      const res = transform(`${data}`, {
+        plugins: [require('./plugin/plugin')]
+      })
+
+      //AST --> JSON
+      const resAST = parser.parse(res.code);
+
+      //JSON --> report
+      const report = transfer(resAST);
+
+      //生成的report名
+      const base = path.basename(filepath);
+
+      const reportName = base.slice(0, base.indexOf('.'));
+
+      //经过plugin转换后的代码
+      // fs.existsSync('./transfer/transfer.js') && fs.unlinkSync('./transfer/transfer.js')
+      // if(!fs.existsSync('./transfer')) {
+      //   fs.mkdirSync('./transfer')
+      // }
+      // fs.writeFileSync('./transfer/transfer.js', res.code, 'utf-8')
+
+      fs.existsSync(`./report/report-${reportName}.json`) && fs.unlinkSync(`./report/report-${reportName}.json`)
+      if(!fs.existsSync('./report')) {
+        fs.mkdirSync('./report')
+      }
+      fs.writeFileSync(`./report/report-${reportName}.json`, JSON.stringify(report,null,2), 'utf-8')
   })
 }
 
-dealScri(walk('./test/e2e-test'));
+handleFile(walk('./test/e2e-test'));
 
 
 
 
 
-//修改AST
-// const res = transform(`${data}`, {
-//   plugins: [require('./plugin/plugin')]
-// })
-
-//AST --> JSON
-// const resAST = parser.parse(res.code);
-
-//JSON --> report
-// const report = transfer(resAST);
-
-// 经过plugin转换后的代码
-// fs.existsSync('./transfer/transfer.js') && fs.unlinkSync('./transfer/transfer.js')
-// if(!fs.existsSync('./transfer')) {
-//   fs.mkdirSync('./transfer')
-// }
-// fs.writeFileSync('./transfer/transfer.js', res.code, 'utf-8')
-
-// fs.existsSync('./report/report.json') && fs.unlinkSync('./report/report.json')
-// if(!fs.existsSync('./report')) {
-//   fs.mkdirSync('./report')
-// }
-// fs.writeFileSync('./report/report.json', JSON.stringify(report,null,2), 'utf-8')
 
 
 
