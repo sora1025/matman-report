@@ -26,4 +26,4 @@ describe('debug 页面：调试UA', function () {
             expect(data.ua).to.equal('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.75 Safari/537.36 mycustomua');
         });
     });
-},{author:'小阳'});
+},{author:'Alice酱'});

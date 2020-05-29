@@ -14,13 +14,13 @@ let walk = function(dir) {
   var results = []
     var list = fs.readdirSync(dir);
     list.forEach(function(file) {
-    	// 排除static静态目录（可按你需求进行新增）
+    	// 排除static静态目录
         file = dir + '/' + file
         var stat = fs.statSync(file)
         if (stat && stat.isDirectory()) {
             results = results.concat(walk(file))
         } else {
-          // 过滤后缀名（可按你需求进行新增）
+          // 过滤后缀名
             let temp = path.basename(file);
             if (temp.substring(temp.indexOf('.')+1) === 'test.js') {
                 results.push(path.resolve(__dirname, file))
@@ -50,7 +50,7 @@ function handleFile(arr) {
 
       const reportName = base.slice(0, base.indexOf('.'));
 
-      //经过plugin转换后的代码
+      // 经过plugin转换后的代码
       // fs.existsSync('./transfer/transfer.js') && fs.unlinkSync('./transfer/transfer.js')
       // if(!fs.existsSync('./transfer')) {
       //   fs.mkdirSync('./transfer')

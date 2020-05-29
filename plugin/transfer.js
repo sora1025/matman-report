@@ -37,7 +37,7 @@ module.exports = function Transfer(raw) {
 
       //如果fnBody存在，就应该有suites字段，该字段为res数组，应该在递归后添加
       if(fnBody) {
-        // res['suites'] = suites;
+        // 递归
         res['suites'] = TransferRaw(fnBody.body.body)
         // console.log(res);
       }
